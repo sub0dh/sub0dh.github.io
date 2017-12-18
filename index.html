@@ -117,6 +117,9 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 		<link href="https://fonts.googleapis.com/css?family=Atma" rel="stylesheet">
 	</head>
+	<canvas id="myCanvas" width="1024" height="1024">
+ 		 
+	</canvas>
 	<body id='subodh'>
 		<header>
 			<nav>
@@ -182,6 +185,32 @@ myDiv.addEventListener("mousedown", function() {
 myDiv.addEventListener("mouseup", function() {
   this.classList.add("animateOnce");
 });
+	var c = document.getElementById("myCanvas");
+
+var ctx = c.getContext("2d");
+var intervalo = window.setInterval(drawC, 1);
+var counter = 0 ; 
+
+function drawC() {
+  color = get_random_color();
+  drawCircle( (Math.random()*1024), (Math.random()*600) , color , (Math.random()*10) );
+	counter = counter +1 ;
+}
+function drawCircle( _x, _y , _color , _radius ){
+	ctx.fillStyle=  _color;
+	ctx.beginPath();
+	ctx.arc( _x, _y, _radius, 0,Math.PI*2,true);
+	ctx.closePath();
+	ctx.fill();
+}
+function get_random_color() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.round(Math.random() * 15)];
+    }
+    return color;
+}
 		</script>
 </body>
 </html>
