@@ -79,6 +79,40 @@
 			display: block;
 			padding: 11px;
 			}
+			.animateOnce {
+  			-webkit-animation: splash 1s normal forwards ease-in-out;
+  			-moz-animation: splash 1s normal forwards ease-in-out;
+ 			-o-animation: splash 1s normal forwards ease-in-out;
+			animation: splash 1s normal forwards ease-in-out;
+			}
+
+			@-webkit-keyframes splash {
+				from {
+					opacity: 0;
+					transform: scale(0.9, 0.9);
+					}
+  50% {
+    opacity: 1;
+    transform: scale(1.1, 1.1);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes splash {
+  from {
+    opacity: 0;
+    transform: scale(0.9, 0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1, 1.1);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}
 		</style>
 		<title>সুবোধ...</title>
 		<meta charset="UTF-8">
@@ -86,7 +120,7 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 		<link href="https://fonts.googleapis.com/css?family=Atma" rel="stylesheet">
 	</head>
-	<body>
+	<body id='subodh'>
 		<header>
 			<nav>
 				<ul>
@@ -139,5 +173,18 @@
 	</footer>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+<script>
+	var myDiv = document.getElementById("subodh");
+
+myDiv.addEventListener("mousedown", function() {
+  if ( this.classList.contains("animateOnce") ) {
+    this.classList.remove("animateOnce");
+  }
+});
+
+myDiv.addEventListener("mouseup", function() {
+  this.classList.add("animateOnce");
+});
+		</script>
 </body>
 </html>
